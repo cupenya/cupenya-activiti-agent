@@ -3,7 +3,7 @@
 
   <artifactId>cupenya-activiti-agent</artifactId>
   <groupId>com.cupenya.agent.activiti</groupId>
-  <version>0.1.0</version>
+  <version>0.1.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Cupenya Activiti Agent</name>
