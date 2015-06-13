@@ -7,6 +7,31 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
+  <name>Cupenya Activiti Agent</name>
+  <description>An agent for the Activiti Open Source BPM engine to transfer events and meta data to Cupenya.</description>
+  <url>https://github.com/cupenya/cupenya-activiti-agent</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>elm-</id>
+      <name>Elmar Weber</name>
+      <email>elmar.weber@cupenya.com</email>
+      <organization>Cupenya</organization>
+      <organizationUrl>http://www.cupenya.com</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
   <properties>
     <activiti.version>5.17.0</activiti.version>
   </properties>
@@ -15,7 +40,7 @@
     <dependency>
       <groupId>com.cupenya.agent.common</groupId>
       <artifactId>cupenya-agent-common</artifactId>
-      <version>0.1.5-SNAPSHOT</version>
+      <version>0.1.7</version>
     </dependency>
 
 
@@ -25,4 +50,76 @@
       <version>${activiti.version}</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <scm>
+    <connection>scm:git:git@github.com:cupenya/cupenya-activiti-agent.git</connection>
+    <url>https://github.com/cupenya/cupenya-activiti-agent.git</url>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
 </project>
